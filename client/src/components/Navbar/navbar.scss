@@ -1,0 +1,209 @@
+@import "../../styles/responsive.scss";
+@import "../../styles/fonts.scss";
+
+nav{
+  height: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  li {
+    transition: all 0.2s ease;
+    font-size: 1.8rem;
+
+    @include sm {
+      display: none;
+    }
+
+    @include md {
+      font-size: 1.4rem;
+    }
+
+    &:hover {
+      background: linear-gradient(45deg, black, #ff9d00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      scale: 1.1;
+    }
+  }
+
+  .left{
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include sm {
+      flex: 1;
+    }
+
+    .logo{
+      display: flex;
+      flex: 1;
+      align-items: center;
+      font-weight: bold;
+
+      span{
+        font-size: 1.8rem;
+        background: linear-gradient(45deg, black, #ff9d00);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+
+        @include md {
+          font-size: 1.4rem;
+        }
+      }
+      img{
+        width: 5rem;
+        margin-right: 5px;
+
+        @include md {
+          width: 4rem;
+        }
+      }
+    }
+
+    ul{
+      display: flex;
+      flex: 2;
+      list-style-type: none;
+      gap: 5rem;
+
+      @include sm{
+        display: none;
+      }
+
+      @include md {
+        font-size: 1rem;
+        margin-left: 2rem;
+        gap: 3rem;
+      }
+    }
+  }
+  .right{
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #fcf5f3;
+    height: 100%;
+
+    // Link components and a tags
+    a {
+      font-size: 1.4rem;
+      margin: 2rem;
+      padding: 1rem;
+    }
+    
+    // disappear bg-color when medium size
+    @include md {
+      background-color: transparent;
+    }
+
+    // login and register buttons
+    span {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      
+      .register{
+        background-color: #fece51;
+        border-radius: .3rem;
+      }
+
+      // do not show this span in small screens
+      @include sm {
+        display: none;
+      }
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.4rem;
+
+      img {
+        margin-right: 2rem;
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid gray;
+      }
+
+      .profile-button {
+        background-color: $button-color;
+        border-radius: .5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        position: relative  ;
+        cursor: pointer;
+
+        &:active {
+          box-shadow: 0 2px 4px rgba($color: #000000, $alpha: .1);
+          background-color: $button-light-color;
+        }
+
+        .notification {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          background-color: red;
+          color: white;
+          border-radius: 50%;
+          width: 2.6rem;
+          height: 2.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .menu-icon{
+      display: none;
+      
+      img{
+        width: 3.6rem;
+        cursor: pointer;
+      }
+
+      @include sm{
+        display: inline;
+        background-color: #000000;
+        z-index: 999;
+      }
+    } 
+
+    // side menu when the screen becomes small-sized
+    .menu{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: -50%;
+      height: 100vh;
+      width: 50%;
+      gap: 3rem;
+      background-color: black;
+      transition: all .5s ease;
+      color: white;
+      font-size: 2rem;
+      z-index: 998;
+
+      &.active {
+        right: 0;
+      }
+
+      @include sm {
+        li {
+          display: initial;
+        }
+      }
+    }
+  }
+}
